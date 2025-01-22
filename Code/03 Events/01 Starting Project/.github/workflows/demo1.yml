@@ -9,6 +9,14 @@ on:
     types:
       - opened
   workflow_dispatch:
+  #Pushes to the main branch and dev-something will trigger this event
+  push:
+    branches:
+      - main
+      - 'dev-*'       # dev-new dev-this-sas ...
+      - 'feat/**'     #feat/new feat/new/button feat/...
+    #paths-ignore:    # if we use just paths it will execute when pushes with changes on that path occurs
+      #- '.github/worflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
